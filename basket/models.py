@@ -15,14 +15,14 @@ class Team(models.Model):
 class Player(models.Model):
     name = models.CharField(max_length=120)
     nickname = models.CharField(max_length=120)
-    birthday = models.DateField()
+    birthday = models.DateField(default="2018-05-19")
     age = models.PositiveIntegerField()
     email = models.EmailField()
     height = models.PositiveIntegerField(help_text="Altura en cm")
     weight = models.PositiveIntegerField(help_text="Peso en gramos")
     picture = models.ImageField(upload_to='picture_players')
-    position = models.CharField(max_length=60, choices=POSITION_PLAYER_CHOICES)
-    team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    position = models.CharField(max_length=60)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE,default=None)
 
     rut = models.CharField(max_length=8)
     dv = models.PositiveIntegerField()
